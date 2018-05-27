@@ -4,8 +4,6 @@ class User < ApplicationRecord
 
   has_many :roles
   has_many :goods, through: :roles
-  has_many :transactions, through: :goods
-  has_many :ratings, through: :transactions
   has_many :goods_categories, through: :goods
   has_many :categories, through: :goods_categories
 
