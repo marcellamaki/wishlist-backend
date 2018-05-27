@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     post '/login', to: 'users#authenticate'
 
-    get '/goods', to: 'goods#index'
+    get '/goods/locations', to: 'goods#locations'
     post '/questions', to: 'questions#index'
     get '/getUser', to: 'users#get_user'
     post '/users/:id/questions', to: 'questions#index'

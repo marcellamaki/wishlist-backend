@@ -1,32 +1,32 @@
 class Api::V1::UsersController < ApplicationController
 
   def index
-    users = User.all
-    render json: users
+    @users = User.all
   end
 
-  def me
-    render json: current_user
-end
+  def new
+    @user = User.new
+  end
 
-  def authenticate
-      @user = User.find_by(username: params[:data][:name])
-      if @user && @user.authenticate(params[:data][:password])
-       render json: @user
-      else
-       render json: {error: "User Does Not Exist"}
-     end
-   end
-
-
-def get_user
-  if current_user
-      render json: {user: current_user, questions:current_user.questions, reminders: current_user.reminders}
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to signin_path(@user)
     else
-      render json: {failure: "Error"}
+      render :new
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+   this_user.destroy
+   @session.clear
+    redirect_to signup_path
+  end
 
   private
 
