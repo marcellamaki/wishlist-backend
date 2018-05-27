@@ -1,0 +1,2 @@
+class GoodCategory < ApplicationRecord
+end
