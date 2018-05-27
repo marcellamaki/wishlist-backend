@@ -5,6 +5,7 @@ class CreateGoods < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :start_price
       t.string :current_price
+      t.integer :role_id
       t.boolean :availability
 
       t.timestamps

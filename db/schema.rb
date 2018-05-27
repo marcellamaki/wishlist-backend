@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_05_26_222941) do
   end
 
   create_table "good_categories", force: :cascade do |t|
+    t.integer "good_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,18 +33,22 @@ ActiveRecord::Schema.define(version: 2018_05_26_222941) do
     t.string "description"
     t.string "start_price"
     t.string "current_price"
+    t.integer "role_id"
     t.boolean "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

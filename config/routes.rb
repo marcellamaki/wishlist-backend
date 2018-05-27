@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :goods, only: [:index, :create, :destroy]
 
     post '/login', to: 'users#authenticate'
+
+    get '/goods', to: 'goods#index'
     post '/questions', to: 'questions#index'
     get '/getUser', to: 'users#get_user'
     post '/users/:id/questions', to: 'questions#index'
